@@ -1,1 +1,1 @@
-# Web-Selenide [![Build status](https://ci.appveyor.com/api/projects/status/vvkq77mm5bae584b?svg=true)](https://ci.appveyor.com/project/Kisulen/web-selenide)
+# Web-Selenium [![Build status](https://ci.appveyor.com/api/projects/status/vvkq77mm5bae584b?svg=true)](https://ci.appveyor.com/project/Kisulen/web-selenide)
