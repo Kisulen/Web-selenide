@@ -32,7 +32,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void shouldTestPositive() throws InterruptedException {
+    void shouldTestPositive() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
@@ -45,8 +45,9 @@ public class SeleniumTest {
     }
 
     @Test
-    void fieldsBlank() throws InterruptedException {
+    void fieldBlankName() {
         driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
         driver.findElement(By.tagName("label")).click();
         driver.findElement(By.className("button")).click();
 
@@ -56,7 +57,19 @@ public class SeleniumTest {
     }
 
     @Test
-    void latinCharsInFieldName() throws InterruptedException {
+    void fieldBlankPhone() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
+        driver.findElement(By.tagName("label")).click();
+        driver.findElement(By.className("button")).click();
+
+        String text = driver.findElement(By.className("input__sub")).getText();
+
+        Assertions.assertEquals("Поле обязательно для заполнения", text.trim());
+    }
+
+    @Test
+    void latinCharsInFieldName() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Maria Koshkina");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
@@ -69,7 +82,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void wrongPhoneNumber() throws InterruptedException {
+    void wrongPhoneNumber() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("89998887766");
@@ -82,7 +95,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void checkBoxNotChecked() throws InterruptedException {
+    void checkBoxNotChecked() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
