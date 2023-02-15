@@ -1,9 +1,9 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SeleniumTest {
 
@@ -32,7 +32,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void shouldTestPositive()  {
+    void shouldTestPositive() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
@@ -45,7 +45,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void fieldsBlankName()  {
+    void fieldsBlankName() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
         driver.findElement(By.tagName("label")).click();
@@ -57,7 +57,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void fieldsBlankPhone()  {
+    void fieldsBlankPhone() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
         driver.findElement(By.tagName("label")).click();
@@ -69,7 +69,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void latinCharsInFieldName()  {
+    void latinCharsInFieldName() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Maria Koshkina");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
@@ -82,7 +82,7 @@ public class SeleniumTest {
     }
 
     @Test
-    void wrongPhoneNumber()  {
+    void wrongPhoneNumber() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("89998887766");
@@ -106,6 +106,5 @@ public class SeleniumTest {
         Assertions.assertTrue(true);
 
     }
-
 
 }
