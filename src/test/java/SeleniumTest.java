@@ -48,24 +48,26 @@ public class SeleniumTest {
     void fieldsBlankName() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
-        driver.findElement(By.tagName("label")).click();
-        driver.findElement(By.className("button")).click();
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("button.button")).click();
 
-        String text = driver.findElement(By.className("input__sub")).getText();
+        //String text = driver.findElement(By.cssSelector("[data-test-id='name']input_invalid. input__sub")).getText();
 
-        Assertions.assertEquals("Поле обязательно для заполнения", text.trim());
+        Assertions.assertEquals("Поле обязательно для заполнения",
+                driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText().trim());
     }
 
     @Test
     void fieldsBlankPhone() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Кошкина Маруся");
-        driver.findElement(By.tagName("label")).click();
-        driver.findElement(By.className("button")).click();
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("button.button")).click();
 
-        String text = driver.findElement(By.cssSelector(".input_type_tel .input__sub")).getText();
+        //String text = driver.findElement(By.cssSelector("[data-test-id='phone'] .input_invalid .input__sub")).getText();
 
-        Assertions.assertEquals("Поле обязательно для заполнения", text.trim());
+        Assertions.assertEquals("Поле обязательно для заполнения",
+                driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText().trim());
     }
 
     @Test
@@ -101,7 +103,7 @@ public class SeleniumTest {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
         driver.findElement(By.className("button")).click();
 
-        boolean eleSelected = driver.findElement(By.className("input_invalid")).isDisplayed();
+        boolean eleSelected = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid")).isDisplayed();
 
         Assertions.assertTrue(true);
 
